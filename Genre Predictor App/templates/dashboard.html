@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+    <title>Genre Predictor|Dashboard</title>
+
+        <link rel="stylesheet" href="/static/styles.css">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Barlow:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&display=swap" rel="stylesheet">
+
+</head>
+<body>
+
+{% block content %}
+  <div class="card-wrapper-left">
+      <div class="card-column">
+          <div class="card-left">
+
+      <h1 class="center">Welcome!</h1>
+      <p class="center">Hello {{ session['user']['name'] }}! You are currently logged in.</p>
+
+      <div class="center">
+        <a href="/signout" class="btn btn--secondary">Sign Out</a>
+      </div>
+
+    </div>
+
+    <div class="card-left">
+
+      <h2 class="center">Your Info</h2>
+
+      <p>
+        <strong>ID:</strong> {{ session['user']['_id'] }}<br>
+        <strong>Name:</strong> {{ session['user']['name'] }}<br>
+        <strong>Email:</strong> {{ session['user']['email'] }}
+      </p>
+
+    </div>
+      </div>
+    <div class="card-column">
+        <div class="card-record">
+         <h2 class="center">Click Button To Record</h2>
+            <form name="record">
+            <button id="recButton" class="notRec"></button>
+
+             <div class="recMessage">
+                 <div id="recMessage"></div>
+             </div>
+
+<div id="predictionResult" style="display: none;">
+        <p><strong>Genre:</strong> <span id="genre"></span></p>
+        <p><strong>Tempo:</strong> <span id="tempo"></span> beats per minute </p>
+        <p><strong>Duration:</strong> <span id="duration"></span></p>
+    </div>
+</form>
+    </div>
+    </div>
+  </div>
+
+<div class="pie-chart">
+    <canvas id="statistics"></canvas>
+</div>
+{% endblock %}
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
+<script src="/static/scripts.js"></script>
+</body>
+</html>
